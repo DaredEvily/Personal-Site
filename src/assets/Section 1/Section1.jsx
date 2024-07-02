@@ -100,7 +100,7 @@ const HeroSection = () => {
         <span></span>
       </div>
       <div className="hero-content">
-        <h1 className="fade-in-up" ref={(el) => (fadeElemsRef.current[0] = el)}>Ahmad Gamal</h1>
+        <h1 className="fade-in-up" ref={(el) => (fadeElemsRef.current[0] = el)}>Ahmed Gamal</h1>
         <Typewriter text="Full-stack Developer" />
         <a href="https://daredevily.github.io/CV/" className="cta-button fade-in-up" ref={(el) => (fadeElemsRef.current[1] = el)}>Visit CV</a>
       </div>
