@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import './Cards.css';
 
 const Card = ({ title, description, image, link }) => {
-  const handleClick = () => {
-    if (!link || link === '#') return;
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  // If no valid external link, render a non-link card for accessibility
+  const hasLink = link && link !== '#';
 
-  return (
-    <div className="card" onClick={handleClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleClick()}>
+  const content = (
+    <>
       {image && (
         <div className="card-image">
           <img src={image} alt={title} loading="lazy" />
@@ -20,7 +18,23 @@ const Card = ({ title, description, image, link }) => {
         <p>{description}</p>
         <span className="card-link">View ↗</span>
       </div>
-    </div>
+    </>
+  );
+
+  if (!hasLink) {
+    return <div className="card">{content}</div>;
+  }
+
+  return (
+    <a
+      className="card"
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${title} - open in new tab`}
+    >
+      {content}
+    </a>
   );
 };
 
