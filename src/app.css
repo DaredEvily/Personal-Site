@@ -1,10 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --accent-color: #bb86fc;
-  --secondary-color: #03dac6;
+  --bg-color: #08080d;
+  --surface-color: #0f0f16;
+  --card-color: #16161f;
+  --text-color: #eeeef4;
+  --text-muted: #9090a0;
+  --accent-color: #8b7cf7;
+  --accent-light: #a89bf8;
+  --secondary-color: #2ee4c6;
+  --border-color: rgba(255, 255, 255, 0.07);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 8px 32px rgba(139, 124, 247, 0.18);
+  --radius: 16px;
+  --header-height: 70px;
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 0.55s;
 }
 
 * {
@@ -13,17 +25,159 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.is-scrolling .hero-content {
+  pointer-events: none;
+}
+
+main {
+  padding-top: var(--header-height);
+  position: relative;
+  z-index: 1;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
+/* Ambient background */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: floatOrb 20s var(--ease-smooth) infinite alternate;
+}
+
+.ambient-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 124, 247, 0.4) 0%, transparent 70%);
+  top: -10%;
+  left: -10%;
+}
+
+.ambient-orb--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(46, 228, 198, 0.2) 0%, transparent 70%);
+  bottom: 20%;
+  right: -5%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+}
+
+.ambient-orb--3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(139, 124, 247, 0.25) 0%, transparent 70%);
+  top: 50%;
+  left: 40%;
+  animation-delay: -14s;
+  animation-duration: 18s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -40px) scale(1.08); }
+}
+
+/* Scroll reveal */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s var(--ease-smooth),
+    transform 0.75s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+  border-radius: 3px;
+  margin: 0.85rem auto 0;
+  transform: scaleX(0);
+  transition: transform 0.8s var(--ease-smooth) 0.15s;
+}
+
+.reveal-item.revealed.section-title::after,
+.section-title.revealed::after {
+  transform: scaleX(1);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 2.75rem;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+section {
+  padding: clamp(3.5rem, 9vw, 6rem) 0;
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}

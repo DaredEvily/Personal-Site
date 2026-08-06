@@ -1,0 +1,97 @@
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: left, top, transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--secondary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(46, 228, 198, 0.6);
+  transition:
+    width 0.25s var(--ease-smooth),
+    height 0.25s var(--ease-smooth),
+    background 0.25s var(--ease-smooth),
+    box-shadow 0.25s var(--ease-smooth);
+}
+
+.cursor-dot.click {
+  width: 4px;
+  height: 4px;
+  background: var(--accent-light);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(139, 124, 247, 0.55);
+  border-radius: 50%;
+  transition:
+    width 0.35s var(--ease-smooth),
+    height 0.35s var(--ease-smooth),
+    border-color 0.35s var(--ease-smooth),
+    background 0.35s var(--ease-smooth),
+    opacity 0.35s var(--ease-smooth);
+}
+
+.cursor-ring.hover {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(46, 228, 198, 0.7);
+  background: rgba(46, 228, 198, 0.06);
+}
+
+.cursor-ring.click {
+  width: 28px;
+  height: 28px;
+  border-color: var(--accent-light);
+  background: rgba(139, 124, 247, 0.12);
+}
+
+.click-ripple {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 124, 247, 0.7);
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%) scale(1);
+  animation: rippleExpand 0.65s var(--ease-smooth) forwards;
+}
+
+@keyframes rippleExpand {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(6);
+  }
+}
+
+/* Press animation for interactive elements */
+body.custom-cursor-active a:active,
+body.custom-cursor-active button:active,
+body.custom-cursor-active .card:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .click-ripple {
+    display: none;
+  }
+}

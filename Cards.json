@@ -1,10 +1,5 @@
 [    
 {
-    "title": "Drum kit",
-    "description": "Interactive drum pad for playing sounds via keyboard or mouse clicks.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKUx1ZtfX4I__PEzOYPMDEo0FdSYmSz-xsnA&s",
-    "link": "https://daredevily.github.io/DrumKit.github.io/"},
-{
     "title": "Simon game",
     "description": "A memory-based game involving four colors played in sequence for user replication",
     "image": "https://user-images.githubusercontent.com/46281169/60651872-8a8c2480-9e60-11e9-9e6f-feeb76e6e159.PNG",

@@ -1,0 +1,96 @@
+/*
+  Master Education — size controls
+  Change any value below to resize this section manually.
+*/
+#education {
+  --edu-section-padding-y: 2.75rem;       /* vertical section padding */
+  --edu-grid-max-width: 600px;            /* max width of the card grid */
+  --edu-card-min-width: 460px;            /* min card width (multi-card layouts) */
+  --edu-grid-gap: 1.25rem;                /* space between cards */
+  --edu-card-radius: 12px;                /* card corner radius */
+  --edu-image-ratio: 16 / 9;              /* image aspect ratio */
+  --edu-card-padding: 1rem;               /* inner card padding */
+  --edu-title-size: 0.95rem;              /* card title font size */
+  --edu-text-size: 0.8rem;                /* card description font size */
+  --edu-link-size: 0.75rem;               /* "View" link font size */
+  --edu-section-title-size: 1.65rem;      /* "Master Education" heading */
+  --edu-section-subtitle-size: 0.88rem;   /* subtitle under heading */
+  --edu-hover-lift: -5px;                 /* card lift on hover */
+
+  padding: var(--edu-section-padding-y) 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 22, 0.4) 0%,
+    transparent 50%,
+    rgba(15, 15, 22, 0.4) 100%
+  );
+}
+
+#education .section-title {
+  font-size: var(--edu-section-title-size);
+}
+
+#education .section-subtitle {
+  font-size: var(--edu-section-subtitle-size);
+  margin-bottom: 1.75rem;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--edu-card-min-width), 1fr));
+  gap: var(--edu-grid-gap);
+  max-width: var(--edu-grid-max-width);
+  margin-inline: auto;
+}
+
+.education-card {
+  height: 100%;
+}
+
+/* Compact card overrides — scoped to education only */
+#education .card {
+  border-radius: var(--edu-card-radius);
+}
+
+#education .card:hover {
+  transform: translateY(var(--edu-hover-lift));
+}
+
+#education .card-image {
+  aspect-ratio: var(--edu-image-ratio);
+}
+
+#education .card-info {
+  padding: var(--edu-card-padding);
+}
+
+#education .card-info h3 {
+  font-size: var(--edu-title-size);
+  margin-bottom: 0.35rem;
+}
+
+#education .card-info p {
+  font-size: var(--edu-text-size);
+  line-height: 1.55;
+}
+
+#education .card-link {
+  font-size: var(--edu-link-size);
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  #education {
+    --edu-section-padding-y: 2.25rem;
+    --edu-grid-max-width: 100%;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  #education .card-info {
+    padding: 0.9rem;
+  }
+}

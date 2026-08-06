@@ -1,19 +1,19 @@
-#projects {
-  background: transparent;
+#certifications {
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 15, 22, 0.6) 50%, transparent 100%);
 }
 
-.projects-grid {
+.certifications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.75rem;
 }
 
-.project-card {
+.certification-card {
   height: 100%;
 }
 
 @media (max-width: 480px) {
-  .projects-grid {
+  .certifications-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }

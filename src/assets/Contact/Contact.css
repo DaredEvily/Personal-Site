@@ -1,67 +1,160 @@
 #contact {
-    background-color: var(--accent-color);
-    color: white;
-  }
+  background: linear-gradient(160deg, #7c6cf0 0%, #5b4fd4 50%, #4a3fc0 100%);
+  color: white;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
 
-  #contact h2 {
-    color: white;
-  }
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 80%, rgba(46, 228, 198, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-  .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-  }
+#contact .container {
+  position: relative;
+  z-index: 1;
+}
 
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
+#contact .section-title {
+  color: white;
+}
 
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+#contact .section-title::after {
+  background: rgba(255, 255, 255, 0.55);
+}
 
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 5px;
+#contact .section-subtitle {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.contact-form {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--bg-color);
+  transition:
+    border-color 0.35s var(--ease-smooth),
+    box-shadow 0.35s var(--ease-smooth),
+    transform 0.35s var(--ease-smooth);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: white;
+  color: var(--accent-color);
+  border: none;
+  padding: 0.9rem 2.25rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition:
+    background-color 0.4s var(--ease-smooth),
+    color 0.4s var(--ease-smooth),
+    transform 0.4s var(--ease-smooth),
+    box-shadow 0.4s var(--ease-smooth);
+}
+
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+  color: #0a0a0f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.social {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.social a {
+  color: white;
+  font-size: 1.25rem;
+  transition:
+    color 0.35s var(--ease-smooth),
+    transform 0.35s var(--ease-smooth),
+    background 0.35s var(--ease-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.social a:hover {
+  color: var(--secondary-color);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 480px) {
+  .con {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   button[type="submit"] {
-    background-color: white;
-    color: var(--accent-color);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: all 0.3s ease;
+    width: 100%;
   }
 
-  button[type="submit"]:hover {
-    background-color: var(--secondary-color);
-    color: white;
+  .social {
+    justify-content: center;
   }
-#contact{
-    margin-bottom: 0;
 }
-.con {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
-  .social a {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .social a:hover {
-    color: var(--secondary-color);
-  }

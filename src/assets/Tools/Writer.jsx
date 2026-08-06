@@ -1,28 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const Typewriter = ({ text }) => {
-  const typewriterRef = useRef(null);
+  const [displayed, setDisplayed] = useState('');
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const typewriter = typewriterRef.current;
-    if (typewriter) {
-      const originalText = typewriter.textContent;
-      typewriter.textContent = '';
-      let i = 0;
+    let index = 0;
+    let cancelled = false;
+    setDisplayed('');
+    setDone(false);
 
-      const typeWriter = () => {
-        if (i < originalText.length) {
-          typewriter.textContent += originalText.charAt(i);
-          i++;
-          setTimeout(typeWriter, 80);
-        }
-      };
+    const tick = () => {
+      if (cancelled) return;
+      if (index < text.length) {
+        setDisplayed(text.slice(0, index + 1));
+        index += 1;
+        setTimeout(tick, 100 + Math.random() * 25);
+      } else {
+        setDone(true);
+      }
+    };
 
-      typeWriter();
-    }
-  }, []);
+    const startDelay = setTimeout(tick, 900);
+    return () => {
+      cancelled = true;
+      clearTimeout(startDelay);
+    };
+  }, [text]);
 
-  return <p className="typewriter fade-in-up" ref={typewriterRef}>{text}</p>;
+  return (
+    <p className="typewriter">
+      <span className="typewriter-text">{displayed}</span>
+      <span className={`typewriter-cursor ${done ? 'done' : ''}`} aria-hidden="true" />
+    </p>
+  );
 };
 
 export default Typewriter;
