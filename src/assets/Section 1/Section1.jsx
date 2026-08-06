@@ -70,7 +70,7 @@ const HeroSection = () => {
         <h1>Ahmed Gamal</h1>
         <Typewriter text='a MERN Stack Developer' />
         <a
-          href="https://drive.google.com/file/d/1hQ8Qdz937YbsyNZG00nIblI8z9_1w8Cx/view?usp=sharing"
+          href="https://drive.google.com/file/d/1Yv3BIarVHNMpbnRHeUKaSjdpsxafGAG2/view?usp=sharing"
           className="cta-button"
           target="_blank"
           rel="noopener noreferrer"

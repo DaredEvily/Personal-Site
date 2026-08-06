@@ -25,8 +25,20 @@ export default function App() {
       scrollToElement(target, getHeaderOffset() + 8);
     };
 
+    const disableRightClick = (e) => e.preventDefault();
+
+    const preventCardActive = (e) => {
+      if (e.button === 2) e.preventDefault();
+    };
+
     document.addEventListener('click', handleClick);
-    return () => document.removeEventListener('click', handleClick);
+    document.addEventListener('contextmenu', disableRightClick);
+    document.addEventListener('mousedown', preventCardActive, { capture: true });
+    return () => {
+      document.removeEventListener('click', handleClick);
+      document.removeEventListener('contextmenu', disableRightClick);
+      document.removeEventListener('mousedown', preventCardActive, { capture: true });
+    };
   }, []);
 
   return (

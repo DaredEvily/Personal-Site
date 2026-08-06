@@ -238,7 +238,7 @@
 
 @media (max-width: 480px) {
   .scroll-down {
-    bottom: 1.25rem;
+    bottom: 3rem;
   }
 
   .cta-button {

@@ -49,13 +49,21 @@ export default function CustomCursor() {
       setHovering(!!e.target.closest(INTERACTIVE));
     };
 
-    const onClick = (e) => {
+    const createRipple = (x, y) => {
       const ripple = document.createElement('span');
       ripple.className = 'click-ripple';
-      ripple.style.left = `${e.clientX}px`;
-      ripple.style.top = `${e.clientY}px`;
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
       document.body.appendChild(ripple);
       ripple.addEventListener('animationend', () => ripple.remove());
+    };
+
+    const onClick = (e) => {
+      createRipple(e.clientX, e.clientY);
+    };
+
+    const onContextMenu = (e) => {
+      e.preventDefault();
     };
 
     window.addEventListener('mousemove', onMove, { passive: true });
@@ -63,6 +71,7 @@ export default function CustomCursor() {
     window.addEventListener('mouseup', onUp);
     document.addEventListener('mouseover', onOver);
     window.addEventListener('click', onClick);
+    window.addEventListener('contextmenu', onContextMenu);
 
     return () => {
       document.body.classList.remove('custom-cursor-active');
@@ -72,6 +81,7 @@ export default function CustomCursor() {
       window.removeEventListener('mouseup', onUp);
       document.removeEventListener('mouseover', onOver);
       window.removeEventListener('click', onClick);
+      window.removeEventListener('contextmenu', onContextMenu);
     };
   }, []);
 
