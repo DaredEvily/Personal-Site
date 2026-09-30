@@ -32,7 +32,7 @@ const Contact = () => {
             <div className="social">
               <a href="https://github.com/DaredEvily" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               <a href="https://www.youtube.com/@ahmadgamal6802" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
-              <a href="https://www.linkedin.com/in/ahmad-gamal-88589a293/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+              <a href="https://www.linkedin.com/in/ahmed-gamal-fattouh-88589a293/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
               <a href="https://www.facebook.com/hackerCBI" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
             </div>
           </div>
